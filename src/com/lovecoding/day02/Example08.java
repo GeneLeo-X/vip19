@@ -22,12 +22,15 @@ public class Example08 {
         System.out.println("交换后的：n1 = " + n1 + ",n2 = " + n2);
 
         //^按位异或方式
-        n1 = n1 ^ n2;
+       /* n1 = n1 ^ n2;
         n2 = n1 ^ n2;
         n1 = n1 ^ n2;
         System.out.println("交换后的：n1 = " + n1 + ",n2 = " + n2);
-
+*/
         //+ - * /
-        
+
+        n2 = n1 + n2 - (n1 = n2);
+
+        System.out.println("交换后的：n1 = " + n1 + ",n2 = " + n2);
     }
 }

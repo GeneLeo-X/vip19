@@ -46,6 +46,10 @@ import java.util.Scanner;
  *  右移：
  *    无符号右移：
  *    带符号右移：
+ *
+ *  三目运算符:
+ *  X ？ Y ： Z
+ *  首先判断表达式 X 的结果，结果为真则执行Y ，否则执行Z
  */
 public class Example04 {
 
@@ -170,5 +174,18 @@ public class Example04 {
         System.out.println("---------------");
 
         System.out.println(8 >>> 2);//8除以2的2次幂
+    }
+
+    /**
+     * 三目运算符
+     * 仅建议一层 - 至多两层
+     */
+    @Test
+    public void testFn5(){
+        System.out.println(3 > 4 ? (3 + 2) : (1 - 2) > 0 ? "大于0" : "不大于0");//通常情况下判断一次即可
+
+        int x = 33;
+        System.out.println(x > 50 ? "超过半值了" : "未过半");
+
     }
 }
