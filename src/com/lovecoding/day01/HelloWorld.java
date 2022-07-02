@@ -1,4 +1,4 @@
-/**
+package com.lovecoding.day01; /**
  *
  * 快捷提示：
  *  主函数：psvm + enter
