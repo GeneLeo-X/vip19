@@ -16,6 +16,18 @@ public class Example16 {
         }
 
         //第二种
-        
+        System.out.println("\n-------------------------");
+
+        i = 1;
+        j = 1;
+        System.out.print(i + " " + j + " ");
+        int temp;
+        for(int k = 0 ; k < 8 ; k ++){
+            temp = i + j;
+            i = j;
+            j = temp;
+
+            System.out.print(temp + " ");
+        }
     }
 }
