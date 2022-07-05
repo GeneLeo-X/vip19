@@ -7,8 +7,12 @@ import java.util.Arrays;
  */
 public class Example12 {
 
+    static String[] ballPool = new String[33];
+
     public static void main(String[] args) {
-        String[] ballPool = createBallPool();
+        //String[] ballPool = createBallPool();
+
+        createBallPool();//初始化球池
 
         System.out.println("--------欢迎来到双色球--------");
 
@@ -20,7 +24,7 @@ public class Example12 {
      * 生成球池的方法
      */
     public static String[] createBallPool(){
-        String[] ballPool = new String[33];
+        //String[] ballPool = new String[33];
 
         for(int i = 1 ; i <= ballPool.length ; i ++){
 
