@@ -1,5 +1,7 @@
 package com.lovecoding.day04;
 
+import org.junit.Test;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -37,6 +39,7 @@ public class Example04 {
         Random r = new Random();
 
         System.out.println(r.nextInt(100));//不包含边界值：0 ~ 99
+
     }
 
     /**
@@ -50,5 +53,32 @@ public class Example04 {
             if(x == num) return true;
         }
         return false;
+    }
+
+    /**
+     * 测试数组是随机隐藏的
+     */
+    @Test
+    public void testFn(){
+        int[] initArr = getInitArr();//initArr : 要在该数组中进行猜数游戏
+
+        int num = 22;
+
+        boolean result = cs(initArr, num);
+
+        if(result) System.out.println("您盲猜，猜对了");
+        else System.out.println("您猜错了.");
+    }
+
+    public static int[] getInitArr(){
+        Random r = new Random();
+
+        int[] arr = new int[8];
+
+        for (int i = 0; i < arr.length ; i++) {
+            arr[i] = r.nextInt(30);
+        }
+
+        return arr;
     }
 }
