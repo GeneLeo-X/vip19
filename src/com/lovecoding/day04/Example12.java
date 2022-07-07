@@ -11,6 +11,8 @@ public class Example12 {
 
     static String[] ballPool = new String[33];
 
+    final static int BLUE_BOUND = 16;
+
     public static void main(String[] args) {
         //String[] ballPool = createBallPool();
 
@@ -28,7 +30,8 @@ public class Example12 {
         System.out.println("随机抽取的6个红球为: " + Arrays.toString(sysRedBalls));
 
         Random r = new Random();
-        int pIndex = r.nextInt(16);// 0 ~ 15的索引位置
+
+        int pIndex = r.nextInt(BLUE_BOUND);// 0 ~ 15的索引位置
 
         String sysBlueBall = ballPool[pIndex];//系统随机抽取的篮球
         System.out.println("随机抽取的1个篮球为: " + sysBlueBall);
@@ -48,9 +51,15 @@ public class Example12 {
                 case 1: //机选
                     flag = false;
                     userRedBalls = getRdRedBalls();
-                    userBlueBall = ballPool[r.nextInt(16)];
+                    userBlueBall = ballPool[r.nextInt(BLUE_BOUND)];
                     break;
                 case 2: //人选
+                    System.out.println("请选择6个红球：");
+                    for(int i = 0 ; i < userRedBalls.length ; i ++)
+                        userRedBalls[i] = sc.next();//用户连续输入的红球
+
+                    System.out.println("请选择1个篮球: ");
+                    userBlueBall = sc.next();//用户输入的篮球
                     flag = false;
                     break;
 
@@ -65,6 +74,44 @@ public class Example12 {
         System.out.println("用户选择的红球为: " + Arrays.toString(userRedBalls));
 
         System.out.println("用户选择的篮球为: " + userBlueBall);
+
+
+        System.out.println("中了几等奖: " + isAward(sysRedBalls , sysBlueBall , userRedBalls , userBlueBall));
+    }
+
+    /**
+     * 判断中了几等奖
+     * @param sysRedBalls - 系统开奖红球
+     * @param sysBlueBall - 系统开奖篮球
+     * @param userRedBalls  - 用户抽取的红球
+     * @param userBlueBall  - 用户抽取的篮球
+     * @return
+     */
+    public static String isAward(String[] sysRedBalls, String sysBlueBall, String[] userRedBalls, String userBlueBall) {
+
+        int redEqCount = 0;
+
+        for(String sysRedBall : sysRedBalls){
+            for(String userRedBall : userRedBalls)
+                if(null != sysRedBall && sysRedBall.equals(userRedBall)) redEqCount++;
+        }
+
+        System.out.println("有几个红球相等：" + redEqCount);
+
+        int blueEqCount = 0;
+
+        if(null != sysBlueBall && sysBlueBall.equals(userBlueBall)) blueEqCount++;
+
+        System.out.println("篮球是否相等：" + blueEqCount);
+
+        if(blueEqCount == 1 && redEqCount < 3) return "六等奖";
+        else if((blueEqCount + redEqCount) == 4) return "五等奖";
+        else if((redEqCount == 5 && blueEqCount == 0) || (redEqCount == 4 && blueEqCount == 1)) return "四等奖";
+        else if(redEqCount == 5 && blueEqCount == 1) return "三等奖";
+        else if(redEqCount == 6 && blueEqCount == 0) return "二等奖";
+        else if(redEqCount == 6 && blueEqCount == 1) return "一等奖";
+
+        return "未中奖";
     }
 
     /**
