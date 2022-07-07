@@ -41,6 +41,8 @@ public class Example01 {
         h2.age = 2;
 
         System.out.println("H1信息：" + h1.name + ", " + h1.age);
+
+        //h1 = null;释放对象的空间
         //h2 = (Horse) p1;
     }
 }
