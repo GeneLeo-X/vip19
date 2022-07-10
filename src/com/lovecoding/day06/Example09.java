@@ -22,9 +22,26 @@ public class Example09 {
         cm.update(new Chicken(2 , "新小白" , "母" , 8 , "黑白花色"));
 
         cm.printAll();
+
+        System.out.println("----------------------");
+
+        cm.delete(2);
+
+        cm.printAll();
+
+        System.out.println("-----------------------");
+
+        System.out.println(cm.getChickenByCno(2));
     }
 }
 
+/**
+ * 鸡舍管理：
+ *
+ * 增、删、改、查
+ *
+ * CURD
+ */
 class ChickenManager{
     private Chicken[] chickens = new Chicken[5];//初始化5个容量大小
 
@@ -61,17 +78,47 @@ class ChickenManager{
      * @param newChicken
      */
     public void update(Chicken newChicken){
-        /*for(Chicken c : chickens){
+        for(Chicken c : chickens){
             if(c != null){
                 if(newChicken.getCno() == c.getCno()){
-                    c = newChicken;
+                    //c = newChicken;
+                    c.setCno(newChicken.getCno());
+                    c.setName(newChicken.getName());
+                    c.setMonth(newChicken.getMonth());
+                    c.setColor(newChicken.getColor());
                 }
             }
-        }*/
-        for(int i = 0 ; i < count ; i ++){
+        }
+        /*for(int i = 0 ; i < count ; i ++){
             if(chickens[i].getCno() == newChicken.getCno())
                 chickens[i] = newChicken;
+        }*/
+    }
+
+    /**
+     * 删除一只鸡
+     */
+    public void delete(int cno){//根据编号删除一只鸡
+        for(int i = 0 ; i < count ; i ++){
+            if(chickens[i].getCno() == cno){
+
+                for(int j = i + 1 ; j < count ; j++){
+                    chickens[j - 1] = chickens[j];
+                }
+            }
         }
+        chickens[--count] = null;//数组的下标位置是count - 1
+    }
+
+    /**
+     * 根据编号获取一只鸡
+     * @return
+     */
+    public Chicken getChickenByCno(int cno){
+        for(Chicken c : chickens){
+            if(null != c && c.getCno() == cno) return c;
+        }
+        return null;
     }
 }
 
