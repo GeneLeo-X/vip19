@@ -14,3 +14,7 @@ Example05 - static关键字
 Example06 - main主函数
 
 Example07 - 代码块
+
+Example08 - 单例设计模式
+
+Example09 - 对象数组应用案例 - 鸡舍管理
