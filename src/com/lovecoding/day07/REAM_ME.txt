@@ -7,3 +7,5 @@ Example01 - 继承相关讲解
 Example02 - 案例
 
 Example03 - 方法重写
+
+Example04 - 继承与重写的应用实例
