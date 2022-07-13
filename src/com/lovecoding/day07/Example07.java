@@ -82,6 +82,6 @@ interface ChickenService {
     void update();
 
     void delete();
-    
+
     void get();
 }

@@ -15,3 +15,7 @@ Example05 - final关键字
 Example06 - 抽象类
 
 Example07 - 接口
+
+Example08 - 多态
+
+Example09 - 多态的应用实例
