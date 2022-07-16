@@ -17,3 +17,9 @@ Example07 - 基本数据类型包装类
 Example08 - 包与访问修饰符讲解
 
 Example09 - 异常讲解
+
+MyException - 自定义异常类
+
+Example10 - 测试自定义异常
+
+Example11 - debug技术
