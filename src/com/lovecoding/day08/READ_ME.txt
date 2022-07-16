@@ -23,3 +23,7 @@ MyException - 自定义异常类
 Example10 - 测试自定义异常
 
 Example11 - debug技术
+
+Example12 - 字符串应用
+
+Example13 - 字符串API
