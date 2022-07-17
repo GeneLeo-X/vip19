@@ -15,7 +15,7 @@ public class Example06 {
                 , new Dog("阿福" , 6 , "白色")};
 
         Arrays.sort(dogs , new DogComparator());
-        
+
         System.out.println(Arrays.toString(dogs));
 
 
