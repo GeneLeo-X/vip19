@@ -1,14 +1,14 @@
 package com.lovecoding.day11;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+
+import java.util.*;
 
 public class Example07 {
 
     public static void main(String[] args) {
-        hashMap();
+        //hashMap();
+        //hashTable();
+        treeMap();
     }
 
     /**
@@ -31,6 +31,7 @@ public class Example07 {
         map.put(1 , "tom");
         map.put(3 , "lily");
         map.put(1 , "ben");
+        map.put(4 , null);
 
         Set<Map.Entry<Integer, String>> entrySet = map.entrySet();
 
@@ -78,6 +79,79 @@ public class Example07 {
 
         System.out.println("---------------");
 
-        System.out.println(15 & 76372);//相当于 num % 16 = 0 ~ 15 之间的数
+        System.out.println(15 & 736291);//相当于 num % 16 = 0 ~ 15 之间的数
+    }
+
+    /**
+     * Hashtable ： 哈希表
+     * 1、键与值都不可以是null
+     */
+    private static void hashTable(){
+        Map<Integer , String> map = new Hashtable<>();
+
+        map.put(2 , "jack");
+        map.put(3 , "lily");
+
+        map.forEach((k , v) -> System.out.println(k + "->" + v));
+    }
+
+    /**
+     * 与HashMap基本一致
+     *  hashMap链表是单向、双端链表 （查找更快速）
+     */
+    private static void linkedHashMap(){
+        Map<Integer , String> map = new LinkedHashMap<>();
+
+        map.put(2 , "jack");
+        map.put(3 , "lily");
+
+        map.forEach((k , v) -> System.out.println(k + "->" + v));
+    }
+
+    /**
+     * 与TreeSet类似可以根据key值进行排序（自然顺序或者指定比较器规则）
+     *
+     *  key值 也不允许存null值，因为它要根据key进行比较，调用compare方法。
+     */
+    private static void treeMap(){
+        TreeMap<Integer , String> map1 = new TreeMap<>();
+        map1.put(null , "sdsds");
+
+        map1.forEach((k , v)-> System.out.println(k + "->" + v));
+
+        System.out.println("----------------------");
+
+        /*TreeMap<Dog , String> map = new TreeMap<>(new DogComparator());
+
+        map.put(new Dog(11 ,"qqq") , "关关");
+        //map.put(null , "张张");
+        map.put(new Dog(5 ,"wwww") , "张张");
+        map.put(new Dog(3 ,"rrrr") , "刘刘");
+
+        map.forEach((k , v)-> System.out.println(k + "->" + v));*/
+    }
+}
+class Dog {
+    int age;
+    String name;
+
+    public Dog(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Dog{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}
+class DogComparator implements Comparator<Dog>{
+
+    @Override
+    public int compare(Dog o1, Dog o2) {
+        return o1.age - o2.age;
     }
 }

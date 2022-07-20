@@ -14,3 +14,7 @@ Example05 - 其它函数式接口应用
 Example06 - 集合的应用实例
 
 Example07 - Map接口应用
+
+Example08 - Map接口中的新方法
+
+Example09 - Collections集合工具类
