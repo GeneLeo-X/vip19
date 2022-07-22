@@ -4,8 +4,8 @@ public class Example07 {
 
     public static void main(String[] args) {
         MyRunnable4 mr4 = new MyRunnable4();
-        Thread t1 = new Thread(mr4);
-        t1.start();
+        /*Thread t1 = new Thread(mr4);
+        t1.start();*/
     }
 
 
@@ -16,6 +16,7 @@ class MyRunnable4 implements Runnable{
     User user = new User();
 
     public MyRunnable4(){
+        new Thread(this).start();
         user.say(w);
     }
     @Override
