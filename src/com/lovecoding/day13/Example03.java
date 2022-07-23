@@ -2,6 +2,7 @@ package com.lovecoding.day13;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class Example03 {
 
@@ -20,6 +21,12 @@ public class Example03 {
 
         System.out.println("-----------------");
         method();
+
+        System.out.println("---------反射调用类中方法----------");
+
+        method1();
+
+        Class<? extends Dog> aClass1 = dog.getClass();
     }
 
     private static void method(){
@@ -49,6 +56,36 @@ public class Example03 {
             e.printStackTrace();
         }
     }
+
+    private static void method1(){
+        Dog dog = new Dog();
+        Class dogClass = dog.getClass();
+
+        Method[] methods = dogClass.getMethods();
+
+        for (Method method : methods){
+            System.out.println(method.getName() + "-" + method.getParameterCount());
+        }
+
+        System.out.println("------------------");
+
+        Method[] declaredMethods = dogClass.getDeclaredMethods();
+
+        for (Method method : declaredMethods){
+            System.out.println(method.getName() + "-" + method.getParameterCount());
+
+            if(method.getName().equals("eat")){//访问的私有eat方法
+                try {
+                    method.setAccessible(true);//私有eat方法，反射调用时可见
+                    method.invoke(dog , "骨头");//若为私有访问报 java.lang.IllegalAccessException:
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
 
 class Dog {
@@ -57,6 +94,11 @@ class Dog {
     Integer age;
 
     int sno;
+
+    private void eat(String thing){
+
+        System.out.println("私有的eat方法被调用..." + "吃" + thing);
+    }
 
     public Dog() {
     }
