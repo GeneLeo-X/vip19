@@ -12,3 +12,7 @@ Example04 - JavaBean
 Example05 - 单例模式优化
 
 Example06 - 泛型应用
+
+Example07 - 正则
+
+Example08 - 枚举
