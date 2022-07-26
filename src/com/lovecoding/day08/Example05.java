@@ -8,15 +8,15 @@ public class Example05 {
 
         Outer.Inner inner = out.new Inner();
 
-        System.out.println("------------------");
+        System.out.println("--------成员内部类----------");
 
         inner.method();
 
-        System.out.println("---------------------");
+        System.out.println("----------外部类在方法中实例化内部类并调用内部类的方法-----------");
 
         out.print1();
 
-        System.out.println("----------------------");
+        System.out.println("----------在外部类方法创建内部类并实例化该内部类和调用内部类的方法（该内部类不可使用非final修饰的变量（在java1.8以后在方法中未用final修饰的变量都默认为final修饰））------------");
 
         out.print2();
 

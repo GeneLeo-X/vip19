@@ -23,21 +23,23 @@ public class Example02 {
 
         System.out.println("--------------------");
 
-        buff.delete(0 , 3);
+        buff.delete(0 , 3);//删除字符串下标为0-3的元素
 
         System.out.println(buff);
 
         System.out.println("---------------------");
 
-        System.out.println(buff.indexOf("cccc"));
+        System.out.println(buff.indexOf("cccc"));//返回出现指定字符串的首个元素的位置
 
         System.out.println("--------------------");
 
-        String substring = buff.substring(0, 2);
+        String substring = buff.substring(0, 2);//获取并返回StringBuffer对象中下标从[0,2)的元素字符串
 
         System.out.println(substring);
 
-        buff.reverse();
+
+        buff.reverse();//对字符串进行翻转
+        //System.out.println(buff);
 
         System.out.println("-------------------------");
         StringBuffer buff1 = new StringBuffer("1233210");

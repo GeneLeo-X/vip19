@@ -11,45 +11,26 @@ public class Example06 {
         nm.add(6);
         nm.add(4);
         nm.add(2);
-
-        nm.print();
-
-        System.out.println("\n------------------------");
-
+        nm.delete(10);
         nm.delete(2);
+        nm.change(6,7);
 
         nm.print();
 
-        System.out.println("\n-----------------------");
+        System.out.println();
+        System.out.println("------------------------");
 
-        nm.update(3 , 666);
-
-        //nm.currentIndex = 0;
-
-        nm.print();
-
-        System.out.println("\n-----------------------");
-
-        nm.insert(3 , 555);
-
-        nm.print();
-
-        System.out.println("\n-------------------");
-
-        int data = nm.get(0);
-
-        System.out.println("查找的索引位置元素为： " + data);
+        NodeManager.Node node = nm.search(8);
+        System.out.println(node.getData());
     }
 }
 
 /**
- * 增改删查
+ * 增删改查
  */
 class NodeManager {
 
     Node root;
-
-    int currentIndex;
     /**
      * 添加节点
      * @param data
@@ -73,70 +54,50 @@ class NodeManager {
     }
 
     /**
-     * 根据元素删除节点
+     * 删除节点值为data的节点
      * @param data
      */
-    public void delete(int data) {
-        if(null != root) {
-            if(root.getData() == data){
+    public void delete(int data){
+        if(null == root) return;
+        else{
+            if(root.data == data){
                 root = root.next;
             }else{
-                root.deleteNode(data);
+                root.delete(data);
             }
+
         }
     }
 
     /**
-     * 根据索引位置更新元素 - 头节点位置 0
-     * @param index
+     * 将节点值为data的节点的节点值该为newData
      * @param data
+     * @param newData
      */
-    public void update(int index, int data) {
-
-        if(null != root){
-            if(currentIndex == index){//要更新根节点了
-                root.setData(data);
-            }else {
-                root.updateNode(index , data);
+    public void change(int data, int newData){
+        if(null == root) return;
+        else{
+            if(root.data == data){
+                root.data = newData;
+            }else{
+                root.change(data,newData);
             }
+
         }
-
-
     }
 
-    /**
-     * 插入节点元素 - 头插法（推荐）、尾插法
-     * @param index
-     * @param data
-     */
-    public void insert(int index, int data) {
-        currentIndex = 0;
-        if(null != root){
-            if(currentIndex == index) {
-                Node newNode = new Node(data);
-                newNode.next = root;
-                root = newNode;
-            }else {
-                root.insert(index , data);
+
+    public Node search(int data){
+        if(null == root) return null;
+        else{
+            if(root.data == data){
+                return root;
+            }else{
+                return root.search(data);
             }
+
         }
 
-
-    }
-
-    /**
-     * 根据索引位置查找元素
-     * @param index
-     * @return
-     */
-    public int get(int index) {
-        currentIndex = 0;
-
-        if(null != root){
-            if(currentIndex == index) return root.getData();
-            else return root.getNode(index);//注意：此处的return
-        }
-        return -1;//没找到索引位置
     }
 
     class Node {
@@ -147,15 +108,6 @@ class NodeManager {
         public Node(int data) {
             this.data = data;
         }
-
-        public int getData() {
-            return data;
-        }
-
-        public void setData(int data) {
-            this.data = data;
-        }
-
 
         /**
          * 每一个节点操作
@@ -178,59 +130,44 @@ class NodeManager {
             }
         }
 
-        /**
-         * 递归查找元素删除
-         * @param data
-         */
-        public void deleteNode(int data) {
 
-            if(null != this.next){
-                if(this.next.data == data) this.next = this.next.next;
-                else this.next.deleteNode(data);
-            }
+        public int getData() {
+            return data;
+        }
+
+        public void setData(int data) {
+            this.data = data;
         }
 
 
-        /**
-         * 递归根据索引查找更新元素
-         * @param index
-         * @param data
-         */
-        public void updateNode(int index, int data) {
-
-            if(null != this.next){
-                if(++currentIndex == index){
-                    this.next.data = data;
-                }else {
-                    this.next.updateNode(index , data);
-                }
+        public void delete(int data) {
+            if( this.next != null ){
+                if(this.next.data == data)
+                    this.next = this.next.next;
+                else
+                    this.next.delete(data);
             }
         }
 
-        /**
-         * 递归查找索引位置并头插法插入元素
-         * @param index
-         * @param data
-         */
-        public void insert(int index, int data) {
-            if(null != this.next){
-                if(++currentIndex == index){
-                    Node newNode = new Node(data);
-                    newNode.next = this.next;
-                    this.next = newNode;
-                }else {
-                    this.next.insert(index , data);
-                }
-            }
-        }
-
-        public int getNode(int index) {
-            if(null != this.next){
-                if(++currentIndex == index) return this.next.data;
-                else return this.next.getNode(index);
+        public void change(int data, int newData) {
+            if( this.next != null ){
+                if(this.next.data == data)
+                    this.next.data = newData;
+                else
+                    this.next.change(data,newData);
             }
 
-            return -1;
         }
+
+        public Node search(int data) {
+            if (this.next != null) {
+                if (this.next.data == data)
+                    return this.next;
+                else
+                    return this.next.search(data);
+            }
+            return null;
+        }
+
     }
 }

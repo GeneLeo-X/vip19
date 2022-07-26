@@ -1,7 +1,6 @@
 package com.lovecoding.day02;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  * if(boolean结果类型表达式){}else{}

@@ -17,8 +17,18 @@ public class Example01 {
 
         String str = getStr(s1 , s2);
 
+
         System.out.println("两个字符串中重复的字符串为：" + str);
+
+
     }
+
+    /**
+     * 获取两字符串中同时存在的元素（不重复）
+     * @param s1
+     * @param s2
+     * @return
+     */
 
     private static String getStr(String s1, String s2) {
 

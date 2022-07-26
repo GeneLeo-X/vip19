@@ -27,7 +27,7 @@ class Dog {//implements Comparable{
 
     private String name;
 
-    private int month;
+    private double month;
 
     private String color;
 
@@ -48,7 +48,8 @@ class Dog {//implements Comparable{
         this.name = name;
     }
 
-    public int getMonth() {
+
+    public double getMonth() {
         return month;
     }
 

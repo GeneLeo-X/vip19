@@ -1,6 +1,5 @@
 package com.lovecoding.day02;
 
-import com.lovecoding.day01.HelloWorld;
 import org.junit.Test;
 
 import java.util.Scanner;

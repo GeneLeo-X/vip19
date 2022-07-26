@@ -10,6 +10,6 @@ import java.util.Comparator;
 public class DogComparator implements Comparator<Dog> {
     @Override
     public int compare(Dog d1, Dog d2) {
-        return d1.getMonth() - d2.getMonth();
+        return (int)(d1.getMonth() - d2.getMonth());
     }
 }

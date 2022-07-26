@@ -13,7 +13,7 @@ public class Example07 {
         cat.setName("小猫");
         cat.setAge(2);
         try {
-            Cat cat1 = (Cat)cat.clone();//没有使用new关键字的，申请内存空间的。
+            Cat cat1 = (Cat)cat.clone();   //没有使用new关键字的，申请内存空间的。
 
             System.out.println(cat1);
         } catch (CloneNotSupportedException e) {

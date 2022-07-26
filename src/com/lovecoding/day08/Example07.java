@@ -69,5 +69,22 @@ public class Example07 {
         System.out.println(i14 == i15);
 
         Scanner sc = new Scanner(System.in);
+
+        System.out.println(method());
+    }
+    public static int method(){
+        int i  =0;
+        int j;
+        try {
+            j = 10 / i;
+            System.out.println(10/i);
+        }catch (ArithmeticException e){
+            System.out.println(e);
+            return 0;
+
+        }finally {
+            System.out.println("finally 块被执行");
+        }
+        return j;
     }
 }

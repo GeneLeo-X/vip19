@@ -3,6 +3,7 @@ package com.lovecoding.day09;
 //所有的静态方法都支持静态导入
 import java.util.Random;
 
+import static java.lang.Math.round;
 import static java.lang.Math.sqrt;
 
 public class Example04 {
@@ -21,8 +22,9 @@ public class Example04 {
 
         System.out.println("----------------");
 
-        System.out.println(Math.round((Math.random() * 100)) * 1.0 / 100);
+        //System.out.println(Math.round((Math.random() * 100)) * 1.0 / 100);
 
+        System.out.println(round(0.5));//round取整函数
 
         System.out.println(sqrt(4));
 
