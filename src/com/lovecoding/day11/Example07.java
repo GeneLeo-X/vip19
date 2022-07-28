@@ -33,33 +33,43 @@ public class Example07 {
         map.put(1 , "ben");
         map.put(4 , null);
 
-        Set<Map.Entry<Integer, String>> entrySet = map.entrySet();
+        /**
+         * 遍历map的几种方法
+         */
+        {
+            Set<Map.Entry<Integer, String>> entrySet = map.entrySet();//将map 转变为 set
+            /*方法一*/
+            Iterator<Map.Entry<Integer, String>> iterator = entrySet.iterator();//获得迭代器
 
-        Iterator<Map.Entry<Integer, String>> iterator = entrySet.iterator();
+            while (iterator.hasNext()) {
 
-        while (iterator.hasNext()){
+                Map.Entry<Integer, String> entry = iterator.next();
 
-            Map.Entry<Integer, String> entry = iterator.next();
+                System.out.println(entry.getKey() + " -> " + entry.getValue());
+            }
 
-            System.out.println(entry.getKey() + " -> " + entry.getValue());
+            System.out.println("--------------------");
+            /*方法二
+             * 通过转化的set进行foreach遍历
+             * */
+            entrySet.forEach(entry -> System.out.println(entry.getKey() + "->" + entry.getValue()));
+
+            System.out.println("--------------------");
+            /*方法三
+             * 获得map的key set集，遍历set集的同时对map进行get(key)，获得在map中key对应的value值，实现对map的遍历操作*/
+            Set<Integer> keySet = map.keySet();
+
+            for (Integer key : keySet) {
+
+                System.out.println(key + "->" + map.get(key));//get : 通过一个key获取对应的值
+            }
+
+            System.out.println("--------------------------");
+            /*方法四(最简单、最直接的方法)
+             * 直接对map进行foreach*/
+            map.forEach((k, v) -> System.out.println(k + "->" + v));
         }
 
-        System.out.println("--------------------");
-
-        entrySet.forEach(entry -> System.out.println(entry.getKey() + "->" + entry.getValue()));
-
-        System.out.println("--------------------");
-
-        Set<Integer> keySet = map.keySet();
-
-        for(Integer key : keySet){
-
-            System.out.println(key + "->" + map.get(key));//get : 通过一个key获取对应的值
-        }
-
-        System.out.println("--------------------------");
-
-        map.forEach((k , v) -> System.out.println(k + "->" + v));
 
         System.out.println("----------------------");
 
